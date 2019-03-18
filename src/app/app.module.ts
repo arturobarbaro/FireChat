@@ -12,6 +12,10 @@ import { environment } from '../environments/environment';
 
 import { ChatComponent } from './components/chat/chat.component';
 
+//servicios
+import { ChatService } from './providers/chat.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,9 @@ import { ChatComponent } from './components/chat/chat.component';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     FormsModule
   ],
-  providers: [],
+  providers: [
+      ChatService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
