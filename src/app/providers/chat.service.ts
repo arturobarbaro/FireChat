@@ -25,7 +25,7 @@ export class ChatService {
       this.afAuth.authState.subscribe(
           user=>{
               console.log('Usuario', user);
-              
+
             if(user){
                 this.usuario.nombre = user.displayName;
                 this.usuario.uid = user.uid;
@@ -35,10 +35,15 @@ export class ChatService {
     }
 
     login(proveedor:string) {
+        if(proveedor=="google"){
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        } else {
+            this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+        }
     }
 
     logout() {
+        this.usuario={};
         this.afAuth.auth.signOut();
     }
 
